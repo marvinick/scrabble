@@ -21,7 +21,7 @@
                         'b'=>3,
                         'c'=>3,
                         'm'=>3,
-                        'p'=>1,
+                        'p'=>3,
                         'f'=>4,
                         'h'=>4,
                         'v'=>4,
@@ -33,13 +33,38 @@
                         'q'=>10,
                         'z'=>10);
 
+
           //lower case the input
-          $tiny = explode(" ", mb_strtolower($letters));
+          //star
+          $play = str_split(mb_strtolower($letters));
 
-          //explode
-          $letters
+          // ['s', 't', 'a', 'r']
 
-          }
+            $each_letter = array();
+            $counter = 0;
 
-    }
+            foreach ($play as $letter) {
+                $each_letter[$letter] = $counter;
+                ++$counter;
+            }
+
+            //find match keys between $bank and $each_letter
+            $matched_letters = array_intersect_key($bank, $each_letter);
+
+            //find the value
+            $count = array_sum($matched_letters);
+
+            // $total_count = array_sum($count);
+            return $count;
+
+
+          // //turn to keys
+          // $new_letter = array_flip($play);
+          //
+          // //find match
+          // $matched_letters = array_intersect_key($bank, $new_letter );
+          // $total_count = array_sum($matched_letters);
+          // return $total_count;
+        }
+      }
 ?>
